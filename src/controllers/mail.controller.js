@@ -1,5 +1,5 @@
 import { Error_msg } from "../utils/CatchError.js";
-import { ApiError } from "../utils/apiError.js";
+import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import fs from "fs";
 import {
