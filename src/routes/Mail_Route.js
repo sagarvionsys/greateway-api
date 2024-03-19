@@ -9,7 +9,7 @@ import { upload } from "../middlewares/mutter.middleware.js";
 // route for sending mail regarding job and internship application
 router.post(
   "/sendmailwithattachment",
-  upload.single("Resume"),
+  upload.single("resume"),
   sendmailwithattachment
 );
 // route for sending mail regarding contactus form
