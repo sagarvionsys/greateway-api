@@ -14,14 +14,14 @@ async function sendmailwithattachment(req, res) {
     if (!name || !email || !number || !role) {
       throw new ApiError(400, "All details are required!");
     }
-    if (!req.file || !req.file.path) {
+
+    const filename = req?.file?.originalname;
+    const ResumePath = req?.file?.path;
+    if (!filename || !ResumePath) {
       throw new ApiError(400, "Resume not found! Please try again.");
     }
 
-    const filename = req.file.originalname;
-    const ResumePath = req.file.path;
-
-    await SendMailWithAttachment({
+    const email_status = await SendMailWithAttachment({
       name,
       email,
       number,
@@ -31,14 +31,16 @@ async function sendmailwithattachment(req, res) {
     });
 
     // Delete the file after sending email
-    fs.unlinkSync(ResumePath);
+    if (email_status) {
+      fs.unlinkSync(ResumePath);
+    }
     res
       .status(200)
       .json(new ApiResponse(200, "mail is Submitted", { file: filename }));
   } catch (error) {
     // Delete the file after error
-    fs.unlinkSync(ResumePath);
     Error_msg(res, error);
+    // fs.unlinkSync(ResumePath);
   }
 }
 
@@ -51,7 +53,7 @@ async function sendmailwithoutattachent(req, res) {
     }
     await SendMailWithOutAttachment({ name, email, number, subject, message });
 
-    res.status(200).json(new ApiResponse(200, " contact us mail is Submitted"));
+    res.status(200).json(new ApiResponse(200, "mail is Submitted"));
   } catch (error) {
     Error_msg(res, error);
   }
