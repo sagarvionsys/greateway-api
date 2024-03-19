@@ -13,9 +13,9 @@ const app = express();
 // Access control origin allow
 app.use(cors());
 
-// app.use(cors({
-//   origin: "https://api.com"
-// }))
+app.use(cors({
+  origin:"*"
+}))
 
 app.options("*", cors());
 
