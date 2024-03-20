@@ -13,8 +13,8 @@ const SendMailWithAttachment = async ({ name, email, number, role, ResumePath, f
         })
 
         const config = {
-            from: "worksagar20@gmail.com",
-            to: "sagaryenkure@vionsys.com",
+            from: "greateway.mail@gmail.com",
+            to: "hr@greateway.com",
             subject: `Job Application for ${role}`,
             html: `<p><strong>Name : </strong> ${name}</p>
             <p><strong>Email : </strong> ${email}</p>
@@ -47,8 +47,8 @@ const SendMailWithOutAttachment = async ({ name, email, number, subject, message
         })
 
         const config = {
-            from: "worksagar20@gmail.com",
-            to: "sagaryenkure@vionsys.com",
+            from: "greateway.mail@gmail.com",
+            to: "Career@greateway.com",
             subject: `User Queiry about ${subject}`,
             html: `<p><strong>Name : </strong> ${name}</p>
             <p><strong>Email : </strong> ${email}</p>
