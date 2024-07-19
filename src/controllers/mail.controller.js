@@ -6,6 +6,7 @@ import {
   SendMailWithAttachment,
   SendMailWithOutAttachment,
 } from "../utils/email.js";
+import { redisClient } from "../utils/redis.js";
 
 // function to send job and intership appliction form
 async function sendmailwithattachment(req, res) {
@@ -58,5 +59,16 @@ async function sendmailwithoutattachent(req, res) {
     Error_msg(res, error);
   }
 }
+// function to add visitor count to redis
+async function AddVisitor(req, res) {
+  try {
+    const visitorCount = await redisClient.incr("visitors");
+    res
+      .status(200)
+      .json(new ApiResponse(200, "thanks for visit..", visitorCount));
+  } catch (error) {
+    Error_msg(res, error);
+  }
+}
 
-export { sendmailwithattachment, sendmailwithoutattachent };
+export { sendmailwithattachment, sendmailwithoutattachent, AddVisitor };
