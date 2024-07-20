@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import {
+  AddVisitor,
   sendmailwithattachment,
   sendmailwithoutattachent,
 } from "../controllers/mail.controller.js";
@@ -15,4 +16,5 @@ router.post(
 // route for sending mail regarding contactus form
 router.post("/sendmailwithoutattachent", sendmailwithoutattachent);
 
+router.get("/visitors", AddVisitor);
 export default router;
