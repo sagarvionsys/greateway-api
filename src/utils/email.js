@@ -14,7 +14,7 @@ const SendMailWithAttachment = async ({ name, email, number, role, ResumePath, f
 
         const config = {
             from: "greateway.mail@gmail.com",
-            to: "Career@greateway.com",
+            to: ["Career@greateway.com","hr@greateway.com"],
             subject: `Job Application for ${role}`,
             html: `<p><strong>Name : </strong> ${name}</p>
             <p><strong>Email : </strong> ${email}</p>
